@@ -31,9 +31,55 @@ const getProductById = async (req: Request, res: Response) => {
   res.status(200).json({ message: `Get product ${req.params.id}` });
 };
 
-const createProduct = async (req: Request, res: Response) => {
-  // Logic to create new product
-  res.status(201).json({ message: "Product created" });
+const createProduct = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const {
+      name,
+      brand,
+      description,
+      category,
+      tags,
+      price,
+      discount,
+      quantity,
+      sold,
+      netWeight,
+      type,
+      flavor,
+      image_small,
+      image_big,
+      reviews,
+      rating,
+      user,
+    } = req.body;
+    console.log(req.body);
+    const product = await ProductModel.create({
+      name,
+      brand,
+      description,
+      category,
+      tags,
+      price,
+      discount,
+      quantity,
+      sold,
+      netWeight,
+      type,
+      flavor,
+      image_small,
+      image_big,
+      reviews,
+      rating,
+      user,
+    });
+    res.status(201).json({ success: true, data: product });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const updateProduct = async (req: Request, res: Response) => {

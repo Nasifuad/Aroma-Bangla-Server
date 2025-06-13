@@ -10,9 +10,9 @@ import {
 } from "./product.controller";
 const router = Router();
 
-router.get("/", asyncHandler(getAllProducts));
+router.get("/getProducts", asyncHandler(getAllProducts));
 router.get("/:id", asyncHandler(getProductById));
-router.post("/", checkAuth, asyncHandler(createProduct));
+router.post("/addProduct", checkAuth, asyncHandler(createProduct));
 router.put("/:id", checkAuth, asyncHandler(updateProduct));
 router.delete("/:id", checkAuth, asyncHandler(deleteProduct));
 

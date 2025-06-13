@@ -10,16 +10,26 @@ const ProductSchema = new Schema<Product>(
     tags: { type: [String], default: [] },
     price: { type: Number, required: true },
     discount: { type: Number, default: 0 },
-    quantity: { type: Number, required: true },
+    quantity: { type: Number, required: true, default: 0 },
     sold: { type: Number, default: 0 },
-    netWeight: { type: String, required: true }, // e.g. "100g"
-    form: { type: String, required: true }, // e.g. "granules"
+    netWeight: { type: String, required: true, default: "100g" }, // e.g. "100g"
     flavor: { type: String, default: "classic" }, // e.g. "vanilla"
-    image_small: { type: String, required: true },
-    image_big: { type: [String], required: true },
+    image_small: {
+      type: String,
+      required: true,
+      default:
+        "https://www.cafea.com/fileadmin/_processed_/7/b/csm_C_Thumb_Loeslicher_Kaffee_9f14817bfe.png",
+    },
+    image_big: {
+      type: [String],
+      required: true,
+      default: [
+        "https://www.cafea.com/fileadmin/_processed_/7/b/csm_C_Thumb_Loeslicher_Kaffee_9f14817bfe.png",
+      ],
+    },
     reviews: { type: Number, default: 0 },
-    rating: { type: Number, default: 0 }, // avg. rating
-    user: { type: String, required: true },
+    rating: { type: Number, default: 0, min: 0, max: 5, required: false }, // avg. rating
+    user: { type: String, required: false },
   },
   {
     timestamps: true, // adds createdAt and updatedAt
