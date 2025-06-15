@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "es6",
     "module": "commonjs",
-    "moduleResolution": "node",
     "outDir": "dist",
-    "rootDir": "",
-    "strict": true,
+    "rootDir": ".", // ✅ critical for your case
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "strict": true
   },
-  "include": ["src/**/*"],
+  "include": ["*.ts", "src/**/*.ts"], // ✅ includes root-level .ts files
   "exclude": ["node_modules"]
 }
