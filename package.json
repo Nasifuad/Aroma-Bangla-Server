@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon --exec ts-node server.ts",
