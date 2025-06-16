@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const product_route_1 = require("../modules/Product/product.route");
+//dd
 const router = (0, express_1.default)();
 exports.router = router;
 const routes = [
