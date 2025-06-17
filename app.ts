@@ -16,8 +16,6 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 
-// ← “Hardcore” manual CORS
-
 app.use("/api", router);
 app.use(errorHandler);
 
