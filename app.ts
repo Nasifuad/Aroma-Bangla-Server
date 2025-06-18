@@ -5,10 +5,22 @@ import cookieParser from "cookie-parser";
 import { router } from "./src/route/router";
 import { errorHandler } from "./src/utility/errorHandler";
 const app = express();
+const allowedOrigins = [
+  "https://aroma-bangla-client.vercel.app",
+  "http://localhost:3000",
+  "https://your-second-origin.com",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // Adjust this to your frontend's URL
-    credentials: true, // Allow cookies to be sent
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
